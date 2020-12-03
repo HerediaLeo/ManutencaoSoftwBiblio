@@ -11,6 +11,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,7 +67,7 @@ public class ColaboradorResource {
 		
 	}
 	
-	@GetMapping("/removerColaborador/{id}")
+	@DeleteMapping("/removerColaborador/{id}")
 	@ApiOperation(value = "Remove um colaborador passando o id do colaborador.")
 	public void removeColaborador(@PathVariable Long id) {
 		
@@ -74,7 +75,7 @@ public class ColaboradorResource {
 		
 	}
 	
-	@GetMapping("/removerTodos")
+	@DeleteMapping("/removerTodos")
 	@ApiOperation(value = "Remove todos os colaboradores de uma vez.")
 	public void removerTodos() {
 		
