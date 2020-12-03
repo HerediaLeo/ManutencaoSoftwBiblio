@@ -93,4 +93,13 @@ public class ColaboradorResource {
 	}
 	
 	
+	@GetMapping("/colaboradorListaNegra")
+	@ApiOperation(value = "Retorna uma lista a lista dos colaboradores da lista negra")
+	public ResponseEntity<?> findColaboradoresListaNegra(){
+		
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(cserv.getColaboradoresListaNegra());
+		
+	}
+	
+	
 }

@@ -1,8 +1,11 @@
 package br.com.project.BackendJuniorLeonardoHeredia.service;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,9 +33,10 @@ import br.com.project.BackendJuniorLeonardoHeredia.repository.ColaboradorRepo;
 public class ColaboradorService {
 	
 	public static final String URI = "https://5e74cb4b9dff120016353b04.mockapi.io/api/v1/blacklist";
-	
+			
 	RestTemplate restTemplate = new RestTemplateBuilder().rootUri(URI).build();
 	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:MM:ss");
 	
 	@Autowired
 	ColaboradorRepo colabrepo;
@@ -57,8 +61,7 @@ public class ColaboradorService {
 		}				
 	}
 	
-	// TODO  listar colaboradores agrupados por setor
-	
+
 	public List<ColaboradorDto> getColabBySetor(Long setor_id){
 		
 		List<ColaboradorDto> dto = colabrepo.getColaboradorPorSetor(setor_id);
@@ -162,8 +165,15 @@ public class ColaboradorService {
 		return restTemplate.exchange("/",HttpMethod.GET,
 							  		 null, new ParameterizedTypeReference<List<ColaboradorListaNegraDto>>() {}
 		);
+						
+	}
+	
+	public List<ColaboradorListaNegraDto> getColaboradoresListaNegra(){
+		
+		return getListaNegra().getBody();
 		
 	}
+	
 	
 	public boolean verificaListaNegra(ColaboradorDto colabAdd) {
 		
@@ -210,6 +220,7 @@ public class ColaboradorService {
 		}
 			
 	}
+	
 	
 
 // fim

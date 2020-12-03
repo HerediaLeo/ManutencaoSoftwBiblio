@@ -18,8 +18,8 @@ import lombok.NoArgsConstructor;
 public class ColaboradorListaNegraDto {
 
 	private Long id;
-	private LocalDateTime createdAt;
-	private String nome;		
+	private String createdAt;
+	private String name;		
 	private String cpf;
 	
 }
